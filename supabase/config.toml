@@ -1,0 +1,60 @@
+# Supabase project configuration for ORACLE
+project_id = "oracle"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "oracle_portfolio", "oracle_simulation", "oracle_signals", "oracle_strategy", "oracle_memory", "oracle_autopilot", "oracle_feed", "oracle_audit"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[realtime]
+enabled = true
+# Broadcast these tables over Realtime
+tables = [
+  { schema = "oracle_feed", name = "transparency_feed_events" },
+  { schema = "oracle_simulation", name = "simulation_rounds" },
+  { schema = "oracle_simulation", name = "simulations" },
+  { schema = "oracle_portfolio", name = "trades" },
+]
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+port = 54325
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["https://oracle.vercel.app"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+double_confirm_changes = true
+enable_confirmations = false
+
+[functions]
+# Edge functions auto-deployed with supabase functions deploy
+verify_jwt = false
+
+[analytics]
+enabled = false

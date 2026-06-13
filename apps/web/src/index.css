@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-oracle-border;
+  }
+  body {
+    @apply bg-oracle-bg text-oracle-text font-sans;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-oracle-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-oracle-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-oracle-muted;
+  }
+}
+
+@layer components {
+  .oracle-card {
+    @apply bg-oracle-surface border border-oracle-border rounded-xl p-5;
+  }
+  .oracle-card-hover {
+    @apply oracle-card transition-all duration-200 hover:border-oracle-primary/50 hover:bg-oracle-surface2;
+  }
+  .oracle-btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .oracle-btn-primary {
+    @apply oracle-btn bg-oracle-primary hover:bg-oracle-primary2 text-white;
+  }
+  .oracle-btn-ghost {
+    @apply oracle-btn bg-oracle-surface2 hover:bg-oracle-border text-oracle-text;
+  }
+  .oracle-input {
+    @apply bg-oracle-bg border border-oracle-border rounded-lg px-4 py-2.5 text-oracle-text placeholder-oracle-muted focus:outline-none focus:border-oracle-primary transition-colors w-full;
+  }
+  .oracle-pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono;
+  }
+  .oracle-layer-pill {
+    @apply oracle-pill bg-oracle-primary/15 text-oracle-primary2 border border-oracle-primary/30;
+  }
+  .oracle-grid-bg {
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+/* Glow effect for active elements */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+.glow-accent {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+.glow-success {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+.glow-danger {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}

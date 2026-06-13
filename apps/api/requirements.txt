@@ -1,0 +1,45 @@
+# ════════════════════════════════════════════════════════════════
+# ORACLE FastAPI Backend — Python dependencies
+# Pin aggressively (ADR-005: LangChain breaking changes common)
+# ════════════════════════════════════════════════════════════════
+
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.31.0
+python-multipart==0.0.12
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Supabase
+supabase==2.7.4
+
+# LLM / Agent orchestration (ADR-005, ADR-006)
+langchain==0.3.4
+langchain-core==0.3.12
+langchain-openai==0.2.3
+langchain-community==0.3.3
+langgraph==0.2.39
+openai==1.51.0
+
+# Market data & signals (L1-L5)
+yfinance==0.2.43
+pandas==2.2.3
+numpy==1.26.4
+pandas-ta==0.3.14b1
+requests==2.32.3
+httpx==0.27.2
+websockets==13.1            # Polymarket CLOB WebSocket (L5 real-time)
+
+# Backtest engine
+scipy==1.13.1
+
+# Observability (§20)
+structlog==24.4.0
+
+# Rate limiting & security
+slowapi==0.1.9
+
+# Testing
+pytest==8.3.3
+pytest-asyncio==0.24.0
+httpx==0.27.2

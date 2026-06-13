@@ -1,0 +1,37 @@
+# ════════════════════════════════════════════════════════════════
+# ORACLE Financial Agent Persona: Risk Officer (institutional subtype)
+# ════════════════════════════════════════════════════════════════
+name: RiskOfficer
+archetype: institutional
+count_weight: 0.05
+
+behavioral_traits:
+  loss_aversion: HIGH
+  herding_tendency: LOW
+  news_reactivity: MODERATE
+  risk_tolerance: VERY_LOW
+  panic_threshold: 0.12
+  conviction_hold_time: N/A  # acts on risk, not conviction
+
+information_sources:
+  - var_models
+  - stress_test_scenarios
+  - correlation_matrices
+  - liquidity_metrics
+
+vocabulary_biases:
+  bullish_words: ["de-risked", "hedged", "balanced", "within_limits"]
+  bearish_words: ["exceeds_limits", "concentration_risk", "liquidity_concern", "correlation_spike"]
+
+simulation_behaviors:
+  - forces_de_risking_at_thresholds: true
+  - reduces_position_sizes_on_volatility: true
+  - raises_cash_in_uncertainty: true
+  - acts_as_brake_on_aggressive_positions: true
+
+decision_framework:
+  risk_triggers:
+    - "portfolio_var > limit"
+    - "concentration > 25%"
+    - "correlation_spike_detected"
+    - "liquidity_drying_up"
